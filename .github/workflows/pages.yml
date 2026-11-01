@@ -1,0 +1,62 @@
+name: Publish portfolio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.11.0
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Test portfolio
+        run: pnpm --filter @workspace/career-portfolio test
+      - name: Build portfolio
+        run: pnpm --filter @workspace/career-portfolio build
+        env:
+          BASE_PATH: /
+          PORT: '20775'
+      - name: Prepare direct links and metadata
+        run: pnpm --filter @workspace/career-portfolio exec tsx scripts/prepare-pages.ts
+        env:
+          SITE_URL: https://jchr2301.github.io/
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: artifacts/career-portfolio/dist/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy site
+        id: deployment
+        uses: actions/deploy-pages@v4
