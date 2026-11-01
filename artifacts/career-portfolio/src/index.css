@@ -708,3 +708,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid hsl(var(--primary)); 
   .project-materials figure { grid-template-columns: 1fr; gap: 28px; }
   .project-gallery { margin-top: 40px; }
 }
+
+/* Keyboard and touch navigation. */
+.skip-link { position: fixed; z-index: 100; top: 8px; left: 12px; padding: 12px 16px; color: hsl(var(--background)); background: hsl(var(--foreground)); transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
+.mobile-menu { min-width: 44px; min-height: 44px; }
+#main-content { scroll-margin-top: 80px; }

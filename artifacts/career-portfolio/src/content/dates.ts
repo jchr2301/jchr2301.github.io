@@ -9,5 +9,8 @@ export function formatDate(value?: string) {
 }
 
 export function dateRange(start?: string, end?: string) {
-  return [formatDate(start), formatDate(end)].filter(Boolean).join(' – ');
+  const first = formatDate(start);
+  const last = formatDate(end);
+  if (first && first === last) return first;
+  return [first, last].filter(Boolean).join(' – ');
 }
