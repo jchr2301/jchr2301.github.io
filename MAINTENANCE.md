@@ -150,6 +150,6 @@ GitHub Student Developer Pack is optional student benefits, not hosting. GitHub 
 
 Target repository: `jchr2301/jchr2301.github.io`. Target URL: `https://jchr2301.github.io/`. The workflow in `.github/workflows/pages.yml` tests, builds, creates direct-link HTML files, and deploys on pushes to `main`. Select **GitHub Actions** in the repository's Settings → Pages before the first publication.
 
-After a normal build, run `pnpm --filter @workspace/career-portfolio exec tsx scripts/prepare-pages.ts` to prepare the Pages output. This adds HTML entry files and per-route canonical/share metadata for published routes, a sitemap, robots.txt, and a noindex 404 fallback. It excludes unpublished starter routes. If moving to a different domain, update the workflow's SITE_URL and BASE_PATH together.
+After a normal build, run `pnpm --filter @workspace/scripts exec tsx ../artifacts/career-portfolio/scripts/prepare-pages.ts` to prepare the Pages output. This adds HTML entry files and per-route canonical/share metadata for published routes, a sitemap, robots.txt, and a noindex 404 fallback. It excludes unpublished starter routes. If moving to a different domain, update the workflow's SITE_URL and BASE_PATH together.
 
 Publish a clean source snapshot, excluding `attached_assets/`, local agent state, credentials, generated builds, and the imported Replit Git history. Keep the original local project and backup intact. The target repository has not been created or published merely by adding these files.

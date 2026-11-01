@@ -39,7 +39,7 @@ jobs:
           BASE_PATH: /
           PORT: '20775'
       - name: Prepare direct links and metadata
-        run: pnpm --filter @workspace/career-portfolio exec tsx scripts/prepare-pages.ts
+        run: pnpm --filter @workspace/scripts exec tsx ../artifacts/career-portfolio/scripts/prepare-pages.ts
         env:
           SITE_URL: https://jchr2301.github.io/
       - name: Upload site
