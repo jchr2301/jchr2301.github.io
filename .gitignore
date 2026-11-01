@@ -28,3 +28,8 @@ attached_assets/
 .replit
 Preview.command
 **/.replit-artifact/
+
+# Original local workspace templates not used by the published portfolio
+artifacts/api-server/
+artifacts/mockup-sandbox/
+replit.md

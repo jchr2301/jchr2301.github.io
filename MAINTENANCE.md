@@ -153,3 +153,8 @@ Target repository: `jchr2301/jchr2301.github.io`. Target URL: `https://jchr2301.
 After a normal build, run `pnpm --filter @workspace/scripts exec tsx ../artifacts/career-portfolio/scripts/prepare-pages.ts` to prepare the Pages output. This adds HTML entry files and per-route canonical/share metadata for published routes, a sitemap, robots.txt, and a noindex 404 fallback. It excludes unpublished starter routes. If moving to a different domain, update the workflow's SITE_URL and BASE_PATH together.
 
 Publish a clean source snapshot, excluding `attached_assets/`, local agent state, credentials, generated builds, and the imported Replit Git history. Keep the original local project and backup intact. The target repository has not been created or published merely by adding these files.
+
+
+## Current publication source
+
+The public website source is `jchr2301/jchr2301.github.io` on the `main` branch. The older private `jchr2301/portfolio` repository is retained as an earlier backup. Website updates should be committed and pushed to the public source repository to trigger publication. Local reference attachments and unused templates remain excluded by `.gitignore`.
